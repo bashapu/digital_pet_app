@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: _TabsNonScrollableDemo(),
       ),
     );
@@ -28,7 +28,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     with SingleTickerProviderStateMixin, RestorationMixin {
   late TabController _tabController;
 
-  final RestorableInt tabIndex = RestorableInt(0); 
+  final RestorableInt tabIndex = RestorableInt(0);
 
   @override
   String get restorationId => 'tab_non_scrollable_demo';
@@ -44,7 +44,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     super.initState();
     _tabController = TabController(
       initialIndex: 0,
-      length: 2,
+      length: 3,
       vsync: this,
     );
     _tabController.addListener(() {
@@ -63,9 +63,10 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
   @override
   Widget build(BuildContext context) {
-    final tabs = ['Cat', 'Dog'];
+    final tabs = ['Cat', 'Dog', 'Duck'];
 
-    return Scaffold( //Scafflod gives you Basic App Structure
+    return Scaffold(
+      //Scafflod gives you Basic App Structure
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
@@ -82,12 +83,15 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
       body: TabBarView(
         controller: _tabController,
         children: [
-            Center(
-              child: Text("Meow Meow..."),
-            ),
-            Center(
-              child: Text("Bow Bow..."),
-            )
+          Center(
+            child: Text("Meow Meow..."),
+          ),
+          Center(
+            child: Text("Bow Bow..."),
+          ),
+          Center(
+            child: Text("Quack Quack..."),
+          )
         ],
       ),
     );
